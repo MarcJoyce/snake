@@ -3,6 +3,7 @@ import { snakeBody } from './snake.js'
 let inputDirection = { x: 0, y: 0 }
 let lastInputDirection = { x: 0, y: 0 }
 let gb = document.getElementById('game-board')
+let sb = document.getElementsByClassName('snake')[0]
 
 window.addEventListener('keydown', e => {
     switch (e.key) {
@@ -26,38 +27,27 @@ window.addEventListener('keydown', e => {
 })
 
 window.addEventListener('touchstart', e => {
-    let touch = e.changedTouches[0]
-    startX = touch.pageX
-    startY = touch.pageY
-    startTime = new Date().getTime()
-    e.preventDefault()
-}, false)
-
-window.addEventListener('touchmove', e => {
-    e.preventDefault()
-}, false)
-
-window.addEventListener('touchend', e => {
-    let touch = e.changedTouches[0]
-    distX = touch.pageX - startX
-    distY = touch.pageY - startY
-    
-    if (Math.abs(distX) > Math.abs(distY)) {
-        if (distX > 0 && lastInputDirection.x === 0) {
-            inputDirection = { x: 1, y: 0 }
-        } else if (distX < 0 && lastInputDirection.x === 0) {
+    let sbBox = sb.getBoundingClientRect()
+    let x = e.changedTouches[0].pageX
+    let y = e.changedTouches[0].pageY
+    if (lastInputDirection.x !== 0) {
+        if (x < sbBox.x) {
             inputDirection = { x: -1, y: 0 }
+        } else {
+            inputDirection = { x: 1, y: 0 }
         }
-    } else {
-        if (distY > 0 && lastInputDirection.y === 0) {
+    } else if (lastInputDirection.y !== 0) {
+        if (y < sbBox.y) {
             inputDirection = { x: 0, y: -1 }
-        } else if (distY < 0 && lastInputDirection.y === 0) {
+        } else {
             inputDirection = { x: 0, y: 1 }
         }
+    } else {
+        inputDirection = lastInputDirection
     }
+    
     e.preventDefault()
 }, false)
-
 
 export function getInputDirection() {
     lastInputDirection = inputDirection

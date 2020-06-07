@@ -9,6 +9,6 @@ export function randomGridPos() {
 
 export function outsideGrid(pos) {
     return (
-        pos.x < 0 || pos.x > GRID_SIZE || pos.y < 0 || pos.y > GRID_SIZE
+        pos.x < 1 || pos.x > GRID_SIZE || pos.y < 1 || pos.y > GRID_SIZE
     )
 }
