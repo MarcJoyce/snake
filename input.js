@@ -25,7 +25,7 @@ window.addEventListener('keydown', e => {
         }
 })
 
-gb.addEventListener('touchstart', e => {
+window.addEventListener('touchstart', e => {
     let touch = e.changedTouches[0]
     startX = touch.pageX
     startY = touch.pageY
@@ -33,11 +33,11 @@ gb.addEventListener('touchstart', e => {
     e.preventDefault()
 }, false)
 
-gb.addEventListener('touchmove', e => {
+window.addEventListener('touchmove', e => {
     e.preventDefault()
 }, false)
 
-gb.addEventListener('touchend', e => {
+window.addEventListener('touchend', e => {
     let touch = e.changedTouches[0]
     distX = touch.pageX - startX
     distY = touch.pageY - startY
