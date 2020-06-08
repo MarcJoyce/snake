@@ -30,25 +30,28 @@ window.addEventListener('touchstart', e => {
     let sb = document.getElementsByClassName('snake')[0]
     let sbBox = sb.getBoundingClientRect()
     
-    let x = e.changedTouches[0].pageX
-    let y = e.changedTouches[0].pageY
+    let x = e.changedTouches[0].pageX - (sbBox.left + (sbBox.width / 2))
+    let y = e.changedTouches[0].pageY - (sbBox.top + (sbBox.height / 2))
+
+    console.log(x + "|" + y)
+    
 
     if (lastInputDirection.x === 0) {
-        if (x < sbBox.x) {
+        if (x < 0) {
             inputDirection = { x: -1, y: 0 }
-            console.log("x set");
+            console.log("x minus set");
             
         } else {
             inputDirection = { x: 1, y: 0 }
-            console.log("x set");
+            console.log("x pos set");
         }
     } else if (lastInputDirection.y === 0) {
-        if (y < sbBox.y) {
+        if (y < 0) {
             inputDirection = { x: 0, y: -1 }
-            console.log("y set");
+            console.log("y minus set");
         } else {
             inputDirection = { x: 0, y: 1 }
-            console.log("y set");
+            console.log("y pos set");
         }
     } else {
         inputDirection = lastInputDirection
