@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta 
+     name='viewport' 
+     content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
     <title>Snake Game</title>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             width: 100vw;
             height: 100vh;
@@ -18,8 +25,8 @@
     
         #game-board {
             position: absolute;
-            width: 100vmin;
-            height: 100vmin;
+            width: 95vmin;
+            height: 95vmin;
             background-color: transparent;
             border: 1px solid black;
             display: grid;

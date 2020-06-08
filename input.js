@@ -33,41 +33,21 @@ window.addEventListener('touchstart', e => {
     let x = e.changedTouches[0].pageX - (sbBox.left + (sbBox.width / 2))
     let y = e.changedTouches[0].pageY - (sbBox.top + (sbBox.height / 2))
 
-    console.log(x + "|" + y)
-    
-
     if (lastInputDirection.x === 0) {
         if (x < 0) {
             inputDirection = { x: -1, y: 0 }
-            console.log("x minus set");
-            
         } else {
             inputDirection = { x: 1, y: 0 }
-            console.log("x pos set");
         }
     } else if (lastInputDirection.y === 0) {
         if (y < 0) {
             inputDirection = { x: 0, y: -1 }
-            console.log("y minus set");
         } else {
             inputDirection = { x: 0, y: 1 }
-            console.log("y pos set");
         }
     } else {
-        inputDirection = lastInputDirection
-        console.log("nothing set")
-        
+        inputDirection = lastInputDirection   
     }
-    
-    e.preventDefault()
-}, false)
-
-window.addEventListener('touchmove', e => {
-    e.preventDefault()
-}, false)
-
-window.addEventListener('touchend', e => {
-    e.preventDefault()
 }, false)
 
 export function getInputDirection() {
