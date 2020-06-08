@@ -62,8 +62,20 @@ window.addEventListener('touchstart', e => {
     e.preventDefault()
 }, false)
 
+window.addEventListener('touchmove', e => {
+    e.preventDefault()
+}, false)
+
+window.addEventListener('touchend', e => {
+    e.preventDefault()
+}, false)
+
 export function getInputDirection() {
     lastInputDirection = inputDirection
     return inputDirection
+}
+
+export function resetInput() {
+    inputDirection = { x: 0, y: 0 }
 }
 

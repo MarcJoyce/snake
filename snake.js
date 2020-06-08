@@ -1,7 +1,7 @@
 import { getInputDirection } from "./input.js"
 
 export let snake_speed = 5
-export const snakeBody = [{ x: 11, y: 11 }]
+export let snakeBody = [{ x: 11, y: 11 }]
 let newSegments = 0
 
 export function update() {
@@ -47,6 +47,11 @@ export function getSnakeHead() {
 
 export function getSnakeLength() {
     return snakeBody.length
+}
+
+export function resetSnake() {
+    snake_speed = 5
+    snakeBody = [{ x: 11, y: 11 }]
 }
 
 function equalPos(pos1, pos2) {

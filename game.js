@@ -1,5 +1,6 @@
-import { snake_speed, update as updateSnake, render as renderSnake, getSnakeHead, snakeIntersection, getSnakeLength } from './snake.js'
-import { update as updateFood, render as renderFood } from './food.js'
+import { snake_speed, update as updateSnake, render as renderSnake, getSnakeHead, snakeIntersection, getSnakeLength, resetSnake } from './snake.js'
+import { update as updateFood, render as renderFood, resetFood } from './food.js'
+import { resetInput } from './input.js'
 import { outsideGrid } from './grid.js'
 
 let lastRenderTime = 0
@@ -12,7 +13,7 @@ function main (currentTime) {
 
     if (gameOver) {
         if (confirm("You have lost, your score was " + score + " points. Press ok to restart")) {
-            window.location = '/'
+            resetGame()
         }
         return
     }
@@ -47,4 +48,13 @@ function checkDeath() {
 
 function getScore() {
     return getSnakeLength() - 1
+}
+
+function resetGame() {
+    resetSnake()
+    resetInput()
+    resetFood()
+    update()
+    render()
+    window.requestAnimationFrame(main)
 }
